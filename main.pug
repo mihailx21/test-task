@@ -1,0 +1,122 @@
+-
+    let tableHead = [
+        'Customer name',
+        'Company',
+        'Phone Number',
+        'Email',
+        'Country',
+        'Status'
+    ];
+
+    let tableData = [
+        {
+            name:'Jane Cooper',
+            company:'Microsoft',
+            telno:'(225) 555-0118',
+            email:'jane@microsoft.com',
+            country:'United States',
+            status: true 
+        },
+        {
+            name:'Floyd Miles',
+            company:'Yahoo',
+            telno:'(205) 555-0100',
+            email:'floyd@yahoo.com',
+            country:'Kiribati',
+            status: false 
+        },
+        {
+            name:'Ronald Richards',
+            company:'Adobe',
+            telno:'(302) 555-0107',
+            email:'ronald@adobe.com',
+            country:'Israel',
+            status: false 
+        },
+        {
+            name:'Marvin McKinney',
+            company:'Tesla',
+            telno:'(252) 555-0126',
+            email:'marvin@tesla.com',
+            country:'Iran',
+            status: true 
+        },
+        {
+            name:'Jerome Bell',
+            company:'Google',
+            telno:'(629) 555-0129',
+            email:'jerome@google.com',
+            country:'Réunion',
+            status: true 
+        },
+        {
+            name:'Kathryn Murphy',
+            company:'Microsoft',
+            telno:'(406) 555-0120',
+            email:'kathryn@microsoft.com',
+            country:'Curaçao',
+            status: true 
+        },
+        {
+            name:'Jacob Jones',
+            company:'Yahoo',
+            telno:'(208) 555-0112',
+            email:'jacob@yahoo.com',
+            country:'Brazil',
+            status: true 
+        },
+        {
+            name:'Krisitin Watson',
+            company:'Facebook',
+            telno:'(704) 555-0127',
+            email:'kristin@facebook.com',
+            country:'Åland Islands',
+            status: false 
+        }
+    ];
+    let pages = 40;
+    let pagesCounter = 1;
+    let choosenPage = 1;
+
+h1= 'Hello ' + userName + '👋🏼,'
+.main-content
+    .search-info
+        .table-container
+            h2 All Customers 
+            p Active Members
+        input(type="text" id="search" placeholder="Search")
+    table   
+        tr
+            each name in tableHead 
+                th= name
+            each value in tableData
+                tr
+                    each element, key in value
+                        if(key == "status")
+                            if(element == true)
+                                td
+                                    .active Active
+                            else
+                                td
+                                    .inactive Inactive
+                        else
+                            td= element
+    .table-footer 
+        .shown Showing data 1 to 8 of 256K entries
+        .pagination 
+            button= '<'
+            if (pages <= 5)
+                while (pagesCounter < 6)
+                    if(pagesCounter == choosenPage)
+                        button(id="choosen-page")= pagesCounter++
+                    else
+                        button= pagesCounter++
+            else
+                while (pagesCounter < 5)
+                    if(pagesCounter == choosenPage)
+                        button(id="choosen-page")= pagesCounter++
+                    else
+                        button= pagesCounter++
+                button(id="spread") ...
+                button= pages
+            button= '>'

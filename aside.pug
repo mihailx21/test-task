@@ -1,0 +1,54 @@
+-
+    let menuItems = {
+        Dashboard: 1,
+        Product: 2,
+        Customers: 3,
+        Incame: 4,
+        Promote: 5,
+        Help: 6
+    };
+    let choosenMenuItem = 3;
+
+mixin svgAdd(file)
+    case file   
+        when 1
+            include src/menu/1.svg
+        when 2
+            include src/menu/2.svg
+        when 3
+            include src/menu/3.svg
+        when 4
+            include src/menu/4.svg
+        when 5
+            include src/menu/5.svg
+        when 6
+            include src/menu/6.svg
+
+aside-container     
+    .logo 
+        img(src="/src/Dashboard.svg", alt="This is main logo")
+        span v.01
+    menu
+        ul
+            each value, key in menuItems
+                if(value == choosenMenuItem)
+                    li.choosen-menu
+                        +svgAdd(value)
+                        span= key
+                        if(value != 1)
+                            .drop-down= '>'
+                else
+                    li
+                        +svgAdd(value)
+                        span= key
+                        if(value != 1)
+                            .drop-down= '>'
+                 
+footer 
+    .hamburger-menu     
+        button Menu 
+    .user-info 
+        img(src="/src/userimage.jpg", alt="This is user image")
+        .info 
+            .user-name= userName
+            .user-position Project manager
